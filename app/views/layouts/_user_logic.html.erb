@@ -1,0 +1,7 @@
+<% if current_user %>
+  Logged in as <%= current_user.email %>.
+  <%= link_to "Log Out", logout_path, :class => "btn btn-primary btn-lg", :role => "button" %>
+<% else %>
+  <%= link_to "Sign Up", signup_path, :class => "btn btn-primary btn-lg", :role => "button"  %> or
+  <%= link_to "Log In", login_path, :class => "btn btn-primary btn-lg", :role => "button"  %>
+<% end %>
