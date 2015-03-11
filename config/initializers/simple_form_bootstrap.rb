@@ -117,7 +117,7 @@ SimpleForm.setup do |config|
     b.optional :readonly
     b.use :label, class: 'sr-only'
 
-    b.use :input, class: 'form-control'
+    b.use :input, class: 'col-sm-6 form-control'
     b.use :error, wrap_with: { tag: 'span', class: 'help-block' }
     b.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
   end

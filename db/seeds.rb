@@ -1,1 +1,1 @@
-user = User.create!([{ name: 'Fabio', surname: 'Gubert', email: 'fabiogubert@me.com', password: 'gubert', password_confirmation: 'gubert'}])
+user = User.create!([{ first_name: 'Fabio', last_name: 'Gubert', email: 'fabiogubert@me.com', password: 'gubert', password_confirmation: 'gubert'}])
