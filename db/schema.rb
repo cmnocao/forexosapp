@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150311104349) do
+ActiveRecord::Schema.define(version: 20150311113820) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name",       null: false
@@ -29,6 +29,14 @@ ActiveRecord::Schema.define(version: 20150311104349) do
     t.datetime "updated_at"
   end
 
+  create_table "currencies", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.string   "iso",        null: false
+    t.string   "symbol",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "states", force: :cascade do |t|
     t.string   "name",       null: false
     t.integer  "country_id", null: false
@@ -39,12 +47,12 @@ ActiveRecord::Schema.define(version: 20150311104349) do
   add_index "states", ["country_id"], name: "index_states_on_country_id"
 
   create_table "users", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "email"
-    t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string   "first_name",      null: false
+    t.string   "last_name",       null: false
+    t.string   "email",           null: false
+    t.string   "password_digest", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

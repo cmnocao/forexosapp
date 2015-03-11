@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :currencies
+
   resources :cities
 
   resources :states

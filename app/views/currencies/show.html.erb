@@ -1,0 +1,36 @@
+<h3 class="page-header">
+  <%= @currency.name.titleize %>
+  <small>
+    <%= @currency.class %>
+  </small>
+</h3>
+<div class="row">
+  <div class="col-md-8">
+    <h5>Name:</h5>
+    <%= @currency.name.titleize %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8">
+    <h5>ISO:</h5>
+    <%= @currency.iso.upcase %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8">
+    <h5>Symbol:</h5>
+    <%= @currency.symbol %>
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="col-md-8">
+    <%= link_to 'Edit', edit_currency_path(@currency), :class => "btn btn-default" %>
+    |
+    <%= link_to "Back", :back, :class => "btn btn-default" %>
+  </div>
+</div>
