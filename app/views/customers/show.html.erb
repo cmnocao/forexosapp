@@ -1,0 +1,43 @@
+<h3 class="page-header">
+  <%= @customer.full_name.titleize %>
+  <small>
+    <%= @customer.class %>
+  </small>
+</h3>
+<div class="row">
+  <div class="col-md-8">
+    <h5>Name</h5>
+    <%= @customer.full_name.titleize %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8">
+    <h5>Sex</h5>
+    <%= @customer.sex.titleize %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8">
+    <h5>DOB</h5>
+    <%= @customer.dob.strftime("%d/%m/%Y") %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8">
+    <h5>Nationality</h5>
+    <%= @customer.nationality.titleize %>
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="col-md-8">
+    <%= link_to 'Edit', edit_customer_path(@customer), :class => "btn btn-default" %>
+    |
+    <%= link_to "Back", :back, :class => "btn btn-default" %>
+  </div>
+</div>

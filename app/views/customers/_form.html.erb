@@ -1,0 +1,19 @@
+<%= simple_form_for @customer, :html=> { class: 'form-horizontal' }, wrapper: :horizontal_form do |f| %>
+  
+  <%= f.error_notification %>
+
+    <%= f.input :first_name %>
+
+    <%= f.input :last_name %>
+
+    <%= f.input :sex %>
+
+    <%= f.input :dob %>
+
+    <%= f.input :nationality %>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-6">
+        <%= f.submit "Submit", class: "btn btn-default" %>
+
+<% end %>
