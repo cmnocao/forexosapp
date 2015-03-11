@@ -1,8 +1,8 @@
 <h3 class="page-header">
-  Countries
+  Cities
   <div class="pull-right">
     <h4>
-      <%= link_to new_country_path do %>
+      <%= link_to new_city_path do %>
         <i class="fa fa-plus-circle"></i>
       <% end %>
     </h4>
@@ -12,14 +12,16 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>ISO2</th>
+      <th>State</th>
+      <th>Country</th>
     </tr>
   </thead>
   <tbody>
-    <% @countries.each do |c| %>
+    <% @cities.each do |c| %>
       <tr>
         <td><%= link_to c.name.titleize, c %></td>
-        <td><%= c.iso2.upcase %></td>
+        <td><%= link_to c.state.name, state_path(c.state_id) %></td>
+        <td><%= link_to c.state.country.name, country_path(c.state.country_id) %></td>
       </tr>
     <% end %>
   </tbody>

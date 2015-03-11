@@ -1,5 +1,5 @@
 <h3 class="page-header">
-  States
+  States 
   <div class="pull-right">
     <h4>
       <%= link_to new_state_path do %>
@@ -18,12 +18,8 @@
   <tbody>
     <% @states.each do |s| %>
       <tr>
-        <td>
-          <%= link_to s.name.titleize, s %>
-        </td>
-        <td>
-          <%= link_to Country.find_by_id(s.country_id).name, country_path(s.country_id) %>
-        </td>
+        <td><%= link_to s.name.titleize, s %></td>
+        <td><%= link_to s.country.name, country_path(s.country_id) %></td>
       </tr>
     <% end %>
   </tbody>

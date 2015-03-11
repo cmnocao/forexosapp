@@ -1,0 +1,22 @@
+<h3 class="page-header">
+  <%= @city.name.titleize %>
+  <small>
+    <%= @city.class %>
+  </small>
+</h3>
+<div class="row">
+  <div class="col-md-8">
+    <h5>Name:</h5>
+    <%= @city.name.titleize %>
+  </div>
+</div>
+
+<hr/>
+
+<div class="row">
+  <div class="col-md-8">
+    <%= link_to 'Edit', edit_city_path(@city), :class => "btn btn-default" %>
+    |
+    <%= link_to "Back", :back, :class => "btn btn-default" %>
+  </div>
+</div>
