@@ -1,0 +1,13 @@
+<%= simple_form_for @country, :html=> { class: 'form-horizontal' }, wrapper: :horizontal_form do |f| %>
+  
+  <%= f.error_notification %>
+
+    <%= f.input :name %>
+
+    <%= f.input :iso2, label: 'ISO2'%>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-6">
+        <%= f.submit "Submit", class: "btn btn-default" %>
+
+<% end %>

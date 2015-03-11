@@ -16,9 +16,9 @@
 
     <div class="collapse navbar-collapse" id="menu-collapse">
       <ul class="nav navbar-nav navbar-left">
-        <li>
-          <%= link_to "Sign Up", signup_path %>
-        </li>
+        <li><%= link_to "Sign Up", signup_path %></li>
+        <li><%= link_to "Countries", countries_path %></li>
+        <li><%= link_to "States", states_path %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <%= render "layouts/user_logic" %>

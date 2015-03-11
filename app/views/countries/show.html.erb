@@ -1,0 +1,27 @@
+<h3 class="page-header">
+  <%= @country.name.titleize %>
+  <small>
+    <%= @country.class %>
+  </small>
+</h3>
+<div class="row">
+  <div class="col-md-8">
+    <h5>Name:</h5>
+    <%= @country.name.titleize %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-8">
+    <h5>ISO2:</h5>
+    <%= @country.iso2.upcase %>
+  </div>
+</div>
+
+<hr/>
+<div class="row">
+  <div class="col-md-8">
+    <%= link_to 'Edit', edit_country_path(@country), :class => "btn btn-default" %>
+    |
+    <%= link_to "Back", :back, :class => "btn btn-default" %>
+  </div>
+</div>
