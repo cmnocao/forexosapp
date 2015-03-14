@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :rates
+
   root 'home#index'
 
   resources :customers

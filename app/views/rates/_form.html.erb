@@ -1,0 +1,13 @@
+<%= simple_form_for @rate, :html=> { class: 'form-horizontal' }, wrapper: :horizontal_form do |f| %>
+  
+  <%= f.error_notification %>
+
+    <%= f.input :rate %>
+
+    <%= f.input :currency_pair_id %>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-6">
+        <%= f.submit "Submit", class: "btn btn-default" %>
+
+<% end %>
