@@ -19,7 +19,9 @@ class CurrencyPairsController < ApplicationController
   def create
     @currency_pair = CurrencyPair.new(currency_pair_params)
     id = @currency_pair
-    @currency_pair.ccy_pair_name = "#{Currency.find_by_id(id.fr_currency_id).iso.upcase}" + " x " + "#{Currency.find_by_id(id.to_currency_id).iso.upcase}"
+    @currency_pair.ccy_pair_iso = "#{Currency.find_by_id(id.fr_currency_id).iso.upcase}" + " x " + "#{Currency.find_by_id(id.to_currency_id).iso.upcase}"
+    @currency_pair.ccy_pair_name = "#{Currency.find_by_id(id.fr_currency_id).name.titlize}" + " x " + "#{Currency.find_by_id(id.to_currency_id).name.titlize}"
+
     if @currency_pair.save
       redirect_to @currency_pair, notice: 'Currency Pair was successfully created.'
     else

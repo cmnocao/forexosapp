@@ -19,7 +19,7 @@ class RatesController < ApplicationController
   def create
     @rate = Rate.new(rate_params)
     if @rate.save
-      redirect_to @rate, notice: 'Rate was successfully created.'
+      redirect_to rates_path, notice: 'Rate was successfully created.'
     else
       render :new
     end

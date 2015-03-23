@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20150314180900) do
   create_table "currency_pairs", force: :cascade do |t|
     t.integer  "fr_currency_id", null: false
     t.integer  "to_currency_id", null: false
+    t.string   "ccy_pair_iso",   null: false
     t.string   "ccy_pair_name",  null: false
     t.datetime "created_at"
     t.datetime "updated_at"

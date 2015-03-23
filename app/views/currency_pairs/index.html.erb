@@ -18,7 +18,7 @@
   <tbody>
     <% @currency_pairs.each do |c| %>
       <tr>
-        <td><%= link_to ccy_pair_name(c), c %></td>
+        <td><%= link_to c.ccy_pair_iso, c %></td>
         <td><%= ccy_pair_current_rate(c) %></td>
       </tr>
     <% end %>
