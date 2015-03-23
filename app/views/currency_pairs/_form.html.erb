@@ -1,0 +1,13 @@
+<%= simple_form_for @currency_pair, :html=> { class: 'form-horizontal' }, wrapper: :horizontal_form do |f| %>
+  
+  <%= f.error_notification %>
+		
+		<%= f.input :fr_currency_id, :collection => Currency.all, :label_method => :name, :value_method => :id, :label => "From" ,:include_blank => true %>
+
+		<%= f.input :to_currency_id, :collection => Currency.all, :label_method => :name, :value_method => :id, :label => "To" ,:include_blank => true %>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-6">
+        <%= f.submit "Submit", class: "btn btn-default" %>
+
+<% end %>

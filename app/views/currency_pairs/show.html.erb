@@ -1,0 +1,28 @@
+<h3 class="page-header">
+  <small>
+    <%= @currency_pair.class %>
+  </small>
+</h3>
+<div class="row">
+  <div class="col-md-8">
+    <h5>Currency Pair</h5>
+    <%= ccy_pair_name(@currency_pair) %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8">
+    <h5>Current Rate</h5>
+    <%= ccy_pair_current_rate(@currency_pair) %>
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="col-md-8">
+    <%= link_to 'Edit', edit_currency_pair_path(@currency_pair), :class => "btn btn-default" %>
+    |
+    <%= link_to "Back", :back, :class => "btn btn-default" %>
+  </div>
+</div>

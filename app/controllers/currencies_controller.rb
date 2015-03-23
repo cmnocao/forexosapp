@@ -1,4 +1,5 @@
 class CurrenciesController < ApplicationController
+  before_filter :authorize
   before_action :set_currency, only: [:show, :edit, :update, :destroy]
 
   def index

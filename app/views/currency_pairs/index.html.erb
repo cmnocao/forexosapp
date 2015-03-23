@@ -1,8 +1,8 @@
 <h3 class="page-header">
-  Rates 
+  Currency Pairs 
   <div class="pull-right">
     <h4>
-      <%= link_to new_rate_path do %>
+      <%= link_to new_currency_pair_path do %>
         <i class="fa fa-plus-circle"></i>
       <% end %>
     </h4>
@@ -12,14 +12,14 @@
   <thead>
     <tr>
       <th>Currency Pair</th>
-      <th>Rate</th>
+      <th>Current Rate</th>
     </tr>
   </thead>
   <tbody>
-    <% @rates.each do |r| %>
+    <% @currency_pairs.each do |c| %>
       <tr>
-        <td><%= r.currency_pair.ccy_pair_name %></td>
-        <td><%= link_to r.rate, r %></td>
+        <td><%= link_to ccy_pair_name(c), c %></td>
+        <td><%= ccy_pair_current_rate(c) %></td>
       </tr>
     <% end %>
   </tbody>

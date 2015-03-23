@@ -2,9 +2,9 @@
   
   <%= f.error_notification %>
 
-    <%= f.input :rate %>
+    <%= f.input :currency_pair_id, :collection => CurrencyPair.all, :label_method => :ccy_pair_name, :value_method => :id, :label => "Currency Pair" ,:include_blank => false %>
 
-    <%= f.input :currency_pair_id %>
+    <%= f.input :rate %>
 
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-6">

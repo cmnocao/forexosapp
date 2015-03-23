@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150314172941) do
+ActiveRecord::Schema.define(version: 20150314180900) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name",       null: false
@@ -33,6 +33,14 @@ ActiveRecord::Schema.define(version: 20150314172941) do
     t.string   "name",       null: false
     t.string   "iso",        null: false
     t.string   "symbol",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "currency_pairs", force: :cascade do |t|
+    t.integer  "fr_currency_id", null: false
+    t.integer  "to_currency_id", null: false
+    t.string   "ccy_pair_name",  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

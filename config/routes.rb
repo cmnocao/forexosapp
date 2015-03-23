@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :currency_pairs
+
   resources :rates
 
   root 'home#index'
