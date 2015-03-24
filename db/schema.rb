@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150314180900) do
+ActiveRecord::Schema.define(version: 20150323155329) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name",       null: false
@@ -72,6 +72,17 @@ ActiveRecord::Schema.define(version: 20150314180900) do
   end
 
   add_index "states", ["country_id"], name: "index_states_on_country_id"
+
+  create_table "transactions", force: :cascade do |t|
+    t.integer  "currency_pair_id"
+    t.integer  "rate_id"
+    t.float    "fr_amount"
+    t.float    "to_amount"
+    t.integer  "customer_id"
+    t.float    "rate_value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name",      null: false

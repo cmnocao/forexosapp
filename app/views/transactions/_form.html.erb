@@ -1,0 +1,17 @@
+<%= simple_form_for [@customer, @transaction], :html=> { class: 'form-horizontal' }, wrapper: :horizontal_form do |f| %>
+  
+  <%= f.error_notification %>
+
+    <%= f.input :currency_pair_id, :collection => CurrencyPair.all, :label_method => :ccy_pair_name, :value_method => :id, :label => "Currency Pair" ,:include_blank => true %>
+
+    <%= f.input :rate_id, :collection => Rate.all, :label_method => :rate, :value_method => :id, :label => "Rate" ,:include_blank => true%>
+
+    <%= f.input :fr_amount %>
+
+    <%= f.input :to_amount, :input_html => {:onclick => 'calculate();'} %>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-6">
+        <%= f.submit "Submit", class: "btn btn-default" %>
+
+<% end %>

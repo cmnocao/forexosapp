@@ -21,3 +21,12 @@ $(function() {
     $('.alert').slideUp(700);
   }, 1500);
 });
+
+
+function calculate(){
+	var transaction_fr_amount = document.getElementById('transaction_fr_amount').value;
+	var transaction_rate = $("#transaction_rate_id option:selected").text();
+	alert(transaction_rate);
+	var to_amount = transaction_fr_amount * transaction_rate;
+	document.getElementById('transaction_to_amount').value = parseFloat(to_amount).toFixed(2);
+};

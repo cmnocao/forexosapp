@@ -4,6 +4,7 @@ class CurrencyPair < ActiveRecord::Base
 	validates_presence_of :to_currency_id
 
 	has_many :rates
+	has_many :transactions
 
 	
 

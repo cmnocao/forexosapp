@@ -5,6 +5,6 @@ class Rate < ActiveRecord::Base
 	validates :rate, numericality: true
 
 	belongs_to :currency_pair
-
+	has_many :transactions
 
 end

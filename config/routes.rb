@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
   
+   root 'home#index'
+
   resources :currency_pairs
-
   resources :rates
-
-  root 'home#index'
-
-  resources :customers
+  resources :customers do
+      resources :transactions
+  end
   resources :currencies
   resources :cities
   resources :states

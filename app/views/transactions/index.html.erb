@@ -1,0 +1,28 @@
+<h3 class="page-header">
+  States 
+</h3>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Customer</th>
+      <th>Currency Pair</th>
+      <th>From Amount</th>
+      <th>To Amount</th>
+      <th>Rate</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @customer.transactions.each do |t| %>
+      <tr>
+        <td><%= link_to t.id, customer_transactions_path %></td>
+        <td><%= link_to t.customer.full_name, customer_transactions_path %></td>
+        <td><%= t.currency_pair.ccy_pair_iso %></td>
+        <td><%= t.fr_amount %></td>
+        <td><%= t.to_amount %></td>
+        <td><%= t.rate.rate %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
