@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20150323155329) do
     t.string   "iso3",         null: false
     t.string   "capital_name"
     t.boolean  "enabled",      null: false
+    t.string   "nationality"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -52,9 +53,9 @@ ActiveRecord::Schema.define(version: 20150323155329) do
     t.string   "first_name",      null: false
     t.string   "last_name",       null: false
     t.string   "sex",             null: false
-    t.date     "dob",             null: false
+    t.string   "dob",             null: false
     t.string   "profile_picture"
-    t.string   "nationality",     null: false
+    t.integer  "country_id",      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

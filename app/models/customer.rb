@@ -3,10 +3,10 @@ class Customer < ActiveRecord::Base
 	validates_presence_of :first_name
 	validates_presence_of :last_name
 	validates_presence_of :sex
-	validates_presence_of :dob
-	validates_presence_of :nationality
+	validates_presence_of :country_id
 
 	has_many :transactions
+	belongs_to :country
 
 	def self.search(search)
 		if search

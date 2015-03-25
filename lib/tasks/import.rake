@@ -4,8 +4,8 @@ namespace :import do
 	task countries: :environment do
 		CSV.foreach('vendor/countries.csv') do |row|
 			p row
-			enabled, name, iso3, iso2, capital_name = row
-			Country.create!(enabled: enabled, name: name, iso3: iso3, iso2: iso2, capital_name: capital_name)
+			enabled, name, iso3, iso2, capital_name, nationality = row
+			Country.create!(enabled: enabled, name: name, iso3: iso3, iso2: iso2, capital_name: capital_name, nationality: nationality)
 		end
 	end
 
@@ -33,6 +33,15 @@ namespace :import do
 			p row
 			state_id, name  = row 
 			City.create!(state_id: state_id, name: name)
+		end
+	end
+
+	desc 'import customers from csv'
+	task customers: :environment do
+		CSV.foreach('vendor/customers.csv') do |row|
+			p row
+			first_name, last_name, sex, country_id, dob = row
+			Customer.create!(first_name: first_name, last_name: last_name, sex: sex, country_id: country_id, dob: dob)
 		end
 	end
 end
