@@ -1,19 +1,17 @@
+<%= form_tag customers_path, :class => 'form-horizontal', :role => 'form', method: :get do %>
+  <div class="input-group">
+    <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Type your search..." %>
+    <span class="input-group-btn">
+      <%= submit_tag "Go!", class: "btn btn-default" %>
+    </span>
+  </div>
+<% end %>
 <h3 class="page-header">
   Customers <span class="badge"><%= Customer.count %></span>
   <div class="pull-right">
-    <h4>
-      <%= link_to new_customer_path do %>
-        <i class="fa fa-plus-circle"></i>
-      <% end %>
-    </h4>
-  </div>
-  <div class="container">
-    <div class="form-group">
-      <%= form_tag customers_path, :method => 'get' do %>
-        <%= text_field_tag :search, params[:search] %>
-        <%= submit_tag "Search" %>
-      <% end %>
-    </div>
+    <%= link_to new_customer_path do %>
+      <i class="fa fa-plus-circle"></i>
+    <% end %>
   </div>
 </h3>
 <table class="table table-hover">

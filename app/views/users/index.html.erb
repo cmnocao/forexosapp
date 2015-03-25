@@ -1,0 +1,26 @@
+<h3 class="page-header">
+  Users <span class="badge"><%= User.count %></span>
+  <div class="pull-right">
+    <%= link_to signup_path do %>
+      <i class="fa fa-plus-circle"></i>
+    <% end %>
+  </div>
+</h3>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Full Name</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |u| %>
+      <tr>
+        <td><%= link_to u.full_name, u %></td>
+        <td><%= u.email %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "Back", :back, :class => "btn btn-default" %>

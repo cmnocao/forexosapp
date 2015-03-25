@@ -31,8 +31,8 @@ namespace :import do
 	task cities: :environment do
 		CSV.foreach('vendor/cities.csv') do |row|
 			p row
-			state_id, name  = row 
-			City.create!(state_id: state_id, name: name)
+			state_id, name, country_id  = row 
+			City.create!(state_id: state_id, name: name, country_id: country_id)
 		end
 	end
 

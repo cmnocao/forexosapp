@@ -3,6 +3,7 @@ class CreateCities < ActiveRecord::Migration
     create_table :cities do |t|
       t.string :name, null: false
       t.integer :state_id, null: false
+      t.integer :country_id, null: false
 
       t.timestamps
     end  
