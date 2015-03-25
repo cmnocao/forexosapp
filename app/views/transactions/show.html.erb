@@ -1,5 +1,5 @@
 <h3 class="page-header">
-  <%= @transaction.name.titleize %>
+  <%= @transaction.currency_pair.ccy_pair_iso.upcase %>
   <small>
     <%= @transaction.class %>
   </small>
@@ -15,7 +15,7 @@
 
 <div class="row">
   <div class="col-md-8">
-    <%= link_to 'Edit', edit_transaction_path(@transaction), :class => "btn btn-default" %>
+    <%= link_to 'Edit', edit_customer_transaction_path(@customer, @transaction), :class => "btn btn-default" %>
     |
     <%= link_to "Back", :back, :class => "btn btn-default" %>
   </div>

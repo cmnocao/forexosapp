@@ -4,4 +4,6 @@ class Country < ActiveRecord::Base
 
 	validates_presence_of :name
 	validates_presence_of :iso2
+	validates_presence_of :iso3
+
 end

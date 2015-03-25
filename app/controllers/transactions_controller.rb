@@ -18,12 +18,15 @@ class TransactionsController < ApplicationController
   end
 
   def edit
+    @customer = Customer.find(params[:customer_id])
+    @transaction = @customer.transactions.find(params[:id])
   end
 
   def create
     @customer = Customer.find(params[:customer_id])
     @transaction = @customer.transactions.new(transaction_params)
-    @transaction.rate_value = Rate.find_by_id(@transaction.rate_id).last.rate
+    id = @transaction
+    @transaction.rate_value = "#{Rate.find_by_id(id.rate_id).rate}"
     if @transaction.save
       redirect_to customer_transactions_path, notice: 'Transaction was successfully created.'
     else
@@ -33,7 +36,7 @@ class TransactionsController < ApplicationController
 
   def update
     if @transaction.update(transaction_params)
-      redirect_to @transaction, notice: 'Transaction was successfully updated.'
+      redirect_to customer_transaction_path(params[:customer_id], @transaction), notice: 'Transaction was successfully updated.'
     else
       render :edit
     end
@@ -52,6 +55,6 @@ class TransactionsController < ApplicationController
 
 
     def transaction_params
-      params.require(:transaction).permit(:currency_pair_id, :rate_id, :fr_amount, :to_amount)
+      params.require(:transaction).permit(:currency_pair_id, :rate_id, :fr_amount, :to_amount, :customer_id)
     end
 end

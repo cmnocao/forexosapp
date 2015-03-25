@@ -5,10 +5,7 @@ class CreateCities < ActiveRecord::Migration
       t.integer :state_id, null: false
 
       t.timestamps
-    end
-
-    add_index :cities, :state_id
-  
+    end  
   end
 
   def down

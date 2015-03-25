@@ -13,6 +13,8 @@
     <tr>
       <th>Name</th>
       <th>ISO2</th>
+      <th>ISO3</th>
+      <th>Capital Name</th>
     </tr>
   </thead>
   <tbody>
@@ -20,6 +22,8 @@
       <tr>
         <td><%= link_to c.name.titleize, c %></td>
         <td><%= c.iso2.upcase %></td>
+        <td><%= c.iso3.upcase %></td>
+        <td><%= c.capital_name %></td>
       </tr>
     <% end %>
   </tbody>

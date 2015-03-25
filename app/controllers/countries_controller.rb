@@ -44,6 +44,6 @@ class CountriesController < ApplicationController
     end
 
     def country_params
-      params.require(:country).permit(:name, :iso2)
+      params.require(:country).permit(:name, :iso2, :iso3, :capital_name, :enabled)
     end
 end

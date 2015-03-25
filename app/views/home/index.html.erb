@@ -1,3 +1,17 @@
+<div class="container">
+  <div class="form-group">
+    <%= form_tag customers_path, :class => 'form-inline', :role => 'form', method: :get do %>
+      <div class="input-group">
+        <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Type your search..." %>
+        <span class="input-group-btn">
+          <%= submit_tag "Go!", class: "btn btn-default" %>
+        </span>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
 <div class="jumbotron">
   <h1>Welcome to Forex<span class="os">OS</span></h1>
 </div>

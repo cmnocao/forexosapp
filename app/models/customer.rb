@@ -8,6 +8,14 @@ class Customer < ActiveRecord::Base
 
 	has_many :transactions
 
+	def self.search(search)
+		if search
+			where([ "first_name || last_name LIKE ?", "%#{search}%" ])
+		else
+			all
+		end
+	end
+
 	def full_name
 		"#{first_name } #{last_name}"
 	end

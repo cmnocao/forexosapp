@@ -3,12 +3,12 @@ class CreateStates < ActiveRecord::Migration
     create_table :states do |t|
       t.string :name, null: false
       t.integer :country_id, null: false
+      t.string :iso
+      t.string :capital_name
+      t.string :code
 
       t.timestamps
     end
-
-    add_index :states, :country_id
-
   end
 
   def down

@@ -20,19 +20,21 @@ ActiveRecord::Schema.define(version: 20150323155329) do
     t.datetime "updated_at"
   end
 
-  add_index "cities", ["state_id"], name: "index_cities_on_state_id"
-
   create_table "countries", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.string   "iso2",       null: false
+    t.string   "name",         null: false
+    t.string   "iso2",         null: false
+    t.string   "iso3",         null: false
+    t.string   "capital_name"
+    t.boolean  "enabled",      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "currencies", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.string   "iso",        null: false
-    t.string   "symbol",     null: false
+    t.string   "name",            null: false
+    t.string   "iso",             null: false
+    t.string   "base_unit_one"
+    t.string   "base_unit_other"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -65,13 +67,14 @@ ActiveRecord::Schema.define(version: 20150323155329) do
   end
 
   create_table "states", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.integer  "country_id", null: false
+    t.string   "name",         null: false
+    t.integer  "country_id",   null: false
+    t.string   "iso"
+    t.string   "capital_name"
+    t.string   "code"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "states", ["country_id"], name: "index_states_on_country_id"
 
   create_table "transactions", force: :cascade do |t|
     t.integer  "currency_pair_id"
