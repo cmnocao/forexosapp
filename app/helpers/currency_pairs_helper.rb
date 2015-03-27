@@ -4,7 +4,7 @@ private
 
 	def ccy_pair_current_rate(c)
 		if c.rates.count == 0
-			link_to "Add a rate", new_rate_path
+			link_to "Add a rate", new_rate_path(c)
 		else
 			"#{c.rates.last.rate}"
 		end

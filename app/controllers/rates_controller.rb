@@ -11,6 +11,7 @@ class RatesController < ApplicationController
 
   def new
     @rate = Rate.new
+    @ccy_pair_iso
   end
 
   def edit

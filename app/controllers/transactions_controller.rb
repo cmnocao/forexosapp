@@ -15,8 +15,6 @@ class TransactionsController < ApplicationController
   def new
     @customer = Customer.find(params[:customer_id])
     @transaction = @customer.transactions.new
-    @currency_pairs = CurrencyPair.all
-    @rates = Rate.all
   end
 
   def edit
