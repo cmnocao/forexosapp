@@ -2,10 +2,18 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-
-calculate = ->
-  transaction_fr_amount = document.getElementById('transaction_fr_amount').value
-  transaction_rate = document.getElementById('transaction_rate_id').value
-  to_amount = transaction_fr_amount * transaction_rate
-  document.getElementById('transaction_to_amount').value = parseFloat(to_amount)
-  return
+jQuery ->
+  $('#transaction_rate_id').parent().hide()
+  rates = $('#transaction_rate_id').html()
+  console.log(rates)
+  $('#transaction_currency_pair_id').change ->
+    ccy_pair = $('#transaction_currency_pair_id :selected').text()
+    ccy_pair_scaped = ccy_pair.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1')
+    options = $(rates).filter("optgroup[label=#{ccy_pair_scaped}]").html()
+    console.log(options)
+    if options
+      $('#transaction_rate_id').html(options)
+      $('#transaction_rate_id').parent().show()      
+    else
+      $('#transaction_rate_id').empty()
+      $('#transaction_rate_id').parent().hide()

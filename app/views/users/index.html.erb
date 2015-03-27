@@ -16,7 +16,7 @@
   <tbody>
     <% @users.each do |u| %>
       <tr>
-        <td><%= link_to u.full_name, u %></td>
+        <td><%= u.full_name %></td>
         <td><%= u.email %></td>
       </tr>
     <% end %>

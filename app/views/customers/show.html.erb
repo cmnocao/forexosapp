@@ -4,11 +4,9 @@
     <%= @customer.class %>
   </small>
   <div class="pull-right">
-    <h4>
-      <%= link_to new_customer_transaction_path(@customer.id) do %>
-        <i class="fa fa-plus-circle"></i>
-      <% end %>
-    </h4>
+    <%= link_to new_customer_transaction_path(@customer.id) do %>
+      <i class="fa fa-plus-circle"></i>
+    <% end %>
   </div>
 </h3>
 <div class="row">

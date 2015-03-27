@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20150323155329) do
   create_table "rates", force: :cascade do |t|
     t.float    "rate",             null: false
     t.integer  "currency_pair_id", null: false
+    t.string   "ccy_pair_iso",     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
