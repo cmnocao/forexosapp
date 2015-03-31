@@ -42,6 +42,11 @@ class CurrencyPairsController < ApplicationController
     redirect_to currency_pairs_url, notice: 'Currency Pair was successfully destroyed.'
   end
 
+  def countries_hash
+    customer = Customers.all
+      customer_hash_array = customer.collect{|country| {:value => customer.country_id , :label => country.firstname}}
+  end
+
   private
     def set_currency_pair
       @currency_pair = CurrencyPair.find(params[:id])

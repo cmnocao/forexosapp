@@ -40,8 +40,8 @@ namespace :import do
 	task customers: :environment do
 		CSV.foreach('vendor/customers.csv') do |row|
 			p row
-			first_name, last_name, sex, country_id, dob = row
-			Customer.create!(first_name: first_name, last_name: last_name, sex: sex, country_id: country_id, dob: dob)
+			first_name, last_name, sex, country_id, dob, country_name = row
+			Customer.create!(first_name: first_name, last_name: last_name, sex: sex, country_id: country_id, dob: dob, country_name: country_name)
 		end
 	end
 end

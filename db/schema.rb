@@ -57,6 +57,9 @@ ActiveRecord::Schema.define(version: 20150323155329) do
     t.string   "dob",             null: false
     t.string   "profile_picture"
     t.integer  "country_id",      null: false
+    t.string   "country_name"
+    t.string   "email"
+    t.string   "phone"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -5,8 +5,8 @@
   	<% str = request.original_fullpath %>
   	<% ccy_pair = str.split("new.")[1] %>
   	<% if ccy_pair %>
-  		<h4>Please set the rate for <%= CurrencyPair.find_by_id(ccy_pair).ccy_pair_iso %></h4>
-  		<%= f.input :currency_pair_id, input_html: {:value => CurrencyPair.find_by_id(ccy_pair).id}, :label => false %>
+  		<h4>Please set/update the rate for <%= CurrencyPair.find_by_id(ccy_pair).ccy_pair_iso %></h4>
+  		<%= f.input :currency_pair_id, input_html: {:value => CurrencyPair.find_by_id(ccy_pair).id}, :label => false, hidden: true %>
     <% else %>
     	<%= f.input :currency_pair_id, :collection => CurrencyPair.all, :label_method => :ccy_pair_iso, :value_method => :id, :label => "Currency Pair" ,:include_blank => false %>
    	<% end %>

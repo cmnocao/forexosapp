@@ -16,8 +16,13 @@ class CustomersController < ApplicationController
   def edit
   end
 
+  def chart
+  end
+
   def create
     @customer = Customer.new(customer_params)
+    id = @customer
+    @customer.country_name = Country.find_by_id(id.country_id).name
     if @customer.save
       redirect_to @customer, notice: 'Customer was successfully created.' 
     else
@@ -46,6 +51,6 @@ class CustomersController < ApplicationController
 
 
     def customer_params
-      params.require(:customer).permit(:first_name, :last_name, :sex, :profile_picture, :dob, :nationality)
+      params.require(:customer).permit(:first_name, :last_name, :sex, :profile_picture, :dob, :country_id, :email, :phone )
     end
 end

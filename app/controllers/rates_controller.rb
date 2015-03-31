@@ -19,9 +19,8 @@ class RatesController < ApplicationController
 
   def create
     @rate = Rate.new(rate_params)
-    @rate.ccy_pair_iso = "#{CurrencyPair.find(@rate.currency_pair_id).ccy_pair_iso}"
     if @rate.save
-      redirect_to rates_path, notice: 'Rate was successfully created.'
+      redirect_to currency_pairs_path, notice: 'Rate was successfully created.'
     else
       render :new
     end

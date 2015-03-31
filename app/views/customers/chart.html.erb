@@ -1,0 +1,5 @@
+<h3 class="page-header">
+ 	Chart <small>Customer</small>
+</h3>
+<br>
+<%= geo_chart Customer.group(:country_name).count %>

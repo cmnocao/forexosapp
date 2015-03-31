@@ -4,9 +4,13 @@ class CreateCustomers < ActiveRecord::Migration
     	t.string	:first_name,	null: false
     	t.string	:last_name,		null: false
     	t.string	:sex,					null: false
-      t.string 		:dob,					null: false
+      t.string 	:dob,					null: false
       t.string	:profile_picture
       t.integer	:country_id,	null: false
+      t.string :country_name
+
+      t.string  :email
+      t.string  :phone
 
       t.timestamps
     end

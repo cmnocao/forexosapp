@@ -9,6 +9,10 @@
 <h3 class="page-header">
   Customers <span class="badge"><%= Customer.count %></span>
   <div class="pull-right">
+    <%= link_to chart_path do %>
+      <i class="fa fa-bar-chart"></i>
+    <% end %>
+    &#8226;
     <%= link_to new_customer_path do %>
       <i class="fa fa-plus-circle"></i>
     <% end %>
@@ -34,3 +38,4 @@
 </table>
 
 <%= link_to "Back", :back, :class => "btn btn-default" %>
+<%= geo_chart Customer.group(:country_name).count %>
