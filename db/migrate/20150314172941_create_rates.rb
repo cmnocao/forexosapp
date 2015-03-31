@@ -3,7 +3,6 @@ class CreateRates < ActiveRecord::Migration
     create_table :rates do |t|
       t.float :rate, null: false
       t.integer :currency_pair_id, null: false
-      t.string :ccy_pair_iso, null: false
 
       t.timestamps
     end

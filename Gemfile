@@ -13,6 +13,7 @@ gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootst
 gem 'simple_form'
 gem 'bcrypt-ruby', '3.1.2'
 gem 'gravatarify', '~> 3.0.0'
+gem 'money'
 
 group :doc do
 	gem 'sdoc', '~> 0.4.0'
