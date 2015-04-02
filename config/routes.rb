@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
   
-   root 'home#index'
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  root 'home#index'
 
+  resources :customers do
+    resources :transactions
+  end
   resources :currency_pairs
   resources :rates
-  resources :customers do
-      resources :transactions
-  end
   resources :currencies
   resources :cities
   resources :states

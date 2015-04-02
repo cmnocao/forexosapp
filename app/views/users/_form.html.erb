@@ -5,11 +5,21 @@
 
     <%= f.input :last_name %>
 
-    <%= f.input :email %>
+    <%= f.input :email, as: :email %>
+
+    <%= f.input :phone, as: :tel %>
 
     <%= f.input :password %>
 
     <%= f.input :password_confirmation %>
+    
+    <% if current_user.admin? %>
+      <%= f.input :admin, checked_value: true, unchecked_value: false%>
+    <% else %>
+      <fieldset disabled>
+        <%= f.input :admin, checked_value: true, unchecked_value: false%>
+      </fieldset>
+    <% end %>
 
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-6">

@@ -15,7 +15,8 @@ gem 'bcrypt-ruby', '3.1.2'
 gem 'gravatarify', '~> 3.0.0'
 gem 'money'
 gem 'groupdate'
-gem "chartkick"
+gem 'chartkick'
+gem 'rails_admin'
 
 group :doc do
 	gem 'sdoc', '~> 0.4.0'

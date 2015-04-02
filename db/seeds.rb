@@ -1,4 +1,7 @@
-User.create!([{ first_name: 'Fabio', last_name: 'Gubert', email: 'fabiogubert@me.com', password: 'gubert', password_confirmation: 'gubert'}])
+User.create!([
+	{ first_name: 'Fabio', last_name: 'Gubert', email: 'fabiogubert@me.com', password: 'gubert', password_confirmation: 'gubert', phone: "07731377782", admin: true, username: "fgubert"},
+	{ first_name: 'Suelen', last_name: 'Gubert', email: 'cashier@me.com', password: 'gubert', password_confirmation: 'gubert', phone: "07503566885", admin: false, username: "cashier"}
+	])
 
 CurrencyPair.create!([
 	{ fr_currency_id: 1, to_currency_id: 2, ccy_pair_iso: "USD x EUR", ccy_pair_name: "US Dollar x Euro"},
