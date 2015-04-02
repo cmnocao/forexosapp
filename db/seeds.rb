@@ -11,8 +11,16 @@ CurrencyPair.create!([
 	])
 
 Rate.create!([
-	{	rate: "0.83", currency_pair_id: 1},
-	{	rate: "0.58", currency_pair_id: 2},
-	{	rate: "1.02", currency_pair_id: 3},
-	{	rate: "4.56", currency_pair_id: 4},
+	{	rate: 0.83, currency_pair_id: 1},
+	{	rate: 0.58, currency_pair_id: 2},
+	{	rate: 1.02, currency_pair_id: 3},
+	{	rate: 4.56, currency_pair_id: 4},
+	])
+
+Transaction.create!([
+	{ currency_pair_id: 1, rate_id: 1, fr_amount: 100.0, to_amount: 83.00, customer_id: 1, rate_value: 0.83},
+	{ currency_pair_id: 2, rate_id: 2, fr_amount: 100.0, to_amount: 58.00, customer_id: 1, rate_value: 0.58},
+	{ currency_pair_id: 2, rate_id: 2, fr_amount: 100.0, to_amount: 58.00, customer_id: 2, rate_value: 0.58},
+	{ currency_pair_id: 3, rate_id: 3, fr_amount: 100.0, to_amount: 102.00, customer_id: 2, rate_value: 1.02},
+	{ currency_pair_id: 4, rate_id: 4, fr_amount: 100.0, to_amount: 456.00, customer_id: 3, rate_value: 4.56},
 	])
