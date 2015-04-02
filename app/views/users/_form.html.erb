@@ -14,11 +14,7 @@
     <%= f.input :password_confirmation %>
     
     <% if current_user.admin? %>
-      <%= f.input :admin, checked_value: true, unchecked_value: false%>
-    <% else %>
-      <fieldset disabled>
-        <%= f.input :admin, checked_value: true, unchecked_value: false%>
-      </fieldset>
+      <%= f.input :admin, as: :boolean, checked_value: 1, unchecked_value: 0 %>
     <% end %>
 
     <div class="form-group">

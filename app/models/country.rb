@@ -1,5 +1,5 @@
 class Country < ActiveRecord::Base
-
+	has_paper_trail
 	has_many :states
 	has_many :customers
 	has_many :cities

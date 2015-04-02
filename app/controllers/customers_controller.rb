@@ -4,6 +4,7 @@ class CustomersController < ApplicationController
 
   def index
     @customers = Customer.search(params[:search])
+    @customers = @customers.paginate(:page => params[:page], :per_page => 15)
   end
 
   def show

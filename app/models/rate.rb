@@ -1,5 +1,5 @@
 class Rate < ActiveRecord::Base
-	
+	has_paper_trail	
 	validates_presence_of :currency_pair_id
 	validates :rate, :presence => true,
             :numericality => true,

@@ -1,5 +1,5 @@
 class Transaction < ActiveRecord::Base
-
+	has_paper_trail
 	validates_presence_of :currency_pair_id
 	validates_presence_of :rate_id
 	validates_presence_of :fr_amount
