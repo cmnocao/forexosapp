@@ -9,7 +9,8 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th>Currency Pair</th>
+      <th>Currency Pair Name</th>
+      <th>Currency Pair ISO</th>
       <th>Rate</th>
     </tr>
   </thead>
@@ -17,7 +18,8 @@
     <% @rates.each do |r| %>
       <tr>
         <td><%= r.currency_pair.ccy_pair_name %></td>
-        <td><%= link_to r.rate, r %></td>
+        <td><%= r.currency_pair.ccy_pair_iso%></td>
+        <td><%= r.rate %></td>
       </tr>
     <% end %>
   </tbody>

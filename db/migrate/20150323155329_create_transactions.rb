@@ -7,6 +7,7 @@ class CreateTransactions < ActiveRecord::Migration
       t.float   :to_amount
       t.integer :customer_id
       t.float   :rate_value
+      t.integer :user_id
 
       t.timestamps
     end

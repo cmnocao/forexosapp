@@ -27,6 +27,7 @@ class TransactionsController < ApplicationController
     @transaction = @customer.transactions.new(transaction_params)
     id = @transaction
     @transaction.rate_value = "#{Rate.find_by_id(id.rate_id).rate}"
+    @transaction.user_id = current_user.id
     if @transaction.save
       redirect_to customer_transactions_path, notice: 'Transaction was successfully created.'
     else

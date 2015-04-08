@@ -90,6 +90,20 @@
 	</div>
 </div>
 
+<div class="row">
+	<div class="col-md-5 pull-right">
+		<% array1 = Transaction.find_by_sql(["SELECT currency_pair_id FROM transactions WHERE customer_id = ?", @customer.id]) %>
+		<% array_uniq = array1.uniq{|x| x.currency_pair_id} %>
+		<% c = array_uniq.count %>
+		<% i = 1 %>
+		<% while i <= c %>
+			<% w = array_uniq[1].currency_pair_id %>
+			<% array2 = Transaction.find_by_sql(["SELECT fr_amount FROM transactions WHERE customer_id = ? AND currency_pair_id = ?", @customer.id, w]) %>
+			<%= array2.map(&:fr_amount).inject(0, &:+) %>
+			<% i = i + 1 %>
+		<% end %>
+	</div>
+</div>
 
 <div class="row">
 	<div class="col-md-8">

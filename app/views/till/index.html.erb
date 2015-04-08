@@ -1,0 +1,19 @@
+<h3 class="page-header">
+  Transactions
+</h3>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Customer</th>
+      <th>From Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @user_transactions.each do |t| %>
+      <tr>
+        <td><%= link_to t.customer.full_name, customer_path(t.customer) %></td>
+        <td><%= t.fr_amount %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

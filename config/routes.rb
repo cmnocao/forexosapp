@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'home#index'
+
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   resources :customers do
     resources :transactions
@@ -15,6 +16,7 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions
 
+  get 'till', to: 'till#index', as: 'till'
   get 'chart', to: 'customers#chart', as: 'chart'
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'

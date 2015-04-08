@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(version: 20150402114755) do
     t.float    "to_amount"
     t.integer  "customer_id"
     t.float    "rate_value"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

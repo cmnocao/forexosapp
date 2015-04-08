@@ -17,9 +17,17 @@
   <tbody>
     <% @currency_pairs.each do |c| %>
       <tr>
-        <td><%= link_to c.ccy_pair_iso, c %></td>
+        <% if current_user.admin? %>
+          <td><%= link_to c.ccy_pair_iso, c %></td>
+         <% else %>
+          <td><%= c.ccy_pair_iso %></td>
+        <% end %>
         <td><%= ccy_pair_current_rate(c) %></td>
-        <td><%= link_to "Update Rate", new_rate_path(c) %></td>
+        <% if current_user.admin? %>
+          <td><%= link_to "Update Rate", new_rate_path(c) %></td>
+        <% else %>
+          <td></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
