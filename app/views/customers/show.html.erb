@@ -1,114 +1,122 @@
 <h3 class="page-header">
-	<% if @customer.sex == "F" %>
-		<i class="fa fa-female fa-x2"></i>
-	<% else %>
-		<i class="fa fa-male fa-x2"></i>
-	<% end %>
-	<%= @customer.full_name.titleize %>
-	<small>
-		<%= @customer.class %>
-	</small>
-	<div class="pull-right">
-		<%= link_to new_customer_transaction_path(@customer.id) do %>
-			<i class="fa fa-money"></i>
-		<% end %>
-		&#8226;
-		<%= link_to edit_customer_path(@customer) do %>
-			<i class="fa fa-pencil"></i>
-		<% end %>
-	</div>
+  <% if @customer.sex == "F" %>
+    <i class="fa fa-female fa-x2"></i>
+  <% else %>
+    <i class="fa fa-male fa-x2"></i>
+  <% end %>
+  <%= @customer.full_name.titleize %>
+  <small>
+    <%= @customer.class %>
+  </small>
+  <div class="pull-right">
+    <%= link_to new_customer_transaction_path(@customer.id) do %>
+      <i class="fa fa-money"></i>
+    <% end %>
+    &#8226;
+    <%= link_to edit_customer_path(@customer) do %>
+      <i class="fa fa-pencil"></i>
+    <% end %>
+  </div>
 </h3>
 <div class="row">
-	<div class="col-md-2">
-		<a href="#" class="thumbnail">
-			<%= gravatar_tag @customer.email, size: 170 %>
-		</a>
-	</div>
-	<div class="col-md-3">
-		<table class="table table-condensed">
-			<tr>
-				<td>
-					<i class="fa fa-gift"></i>
-					<%= @customer.dob %>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<i class="fa fa-globe"></i>
-					<%= Country.find_by_id(@customer.country_id).nationality %>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<i class="fa fa-envelope"></i>
-					<% if @customer.email? %>
-						<%=  @customer.email %>
-					<% else %>
-						No E-Mail
-					<% end %>
-				</td>  
-			</tr>
-			<tr>
-				<td>
-					<i class="fa fa-phone"></i>
-					<% if @customer.phone? %>
-						<%= @customer.phone %>
-					<% else %>
-						No Phone
-					<% end %>
-				</td>  
-			</tr>
-		</table>
-	</div>
-	<div class="col-md-5 pull-right">
-		<table class="table table-condensed">
-			<thead>
-				<th class="text-center">Currency Pair</th>
-				<th class="text-center">From Amount</th>
-				<th class="text-center">Rate</th>
-				<th class="text-center">To Amount</th>
-			</thead>
-			<tbody class="text-center">
-				<% @customer.transactions.each do |t| %>
-					<tr>
-						<td>
-							<%= CurrencyPair.find_by_id(t.currency_pair_id).ccy_pair_iso %>
-						</td>
-						<td>
-							<%= t.fr_amount %>
-						</td>
-						<td>
-							<%= t.rate.rate %>
-						</td>
-						<td>
-							<%= t.to_amount %>
-						</td>
-					</tr>
-				<% end %>
-			</tbody>
-		</table>
-	</div>
+  <div class="col-md-2">
+    <a href="#" class="thumbnail">
+      <%= gravatar_tag @customer.email, size: 170 %>
+    </a>
+  </div>
+  <div class="col-md-3">
+    <table class="table table-condensed">
+      <tr>
+        <td>
+          <i class="fa fa-gift"></i>
+          <%= @customer.dob %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <i class="fa fa-globe"></i>
+          <%= Country.find_by_id(@customer.country_id).nationality %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <i class="fa fa-envelope"></i>
+          <% if @customer.email? %>
+            <%=  @customer.email %>
+          <% else %>
+            No E-Mail
+          <% end %>
+        </td>  
+      </tr>
+      <tr>
+        <td>
+          <i class="fa fa-phone"></i>
+          <% if @customer.phone? %>
+            <%= @customer.phone %>
+          <% else %>
+            No Phone
+          <% end %>
+        </td>  
+      </tr>
+    </table>
+  </div>
+  <div class="col-md-5 pull-right">
+    <table class="table table-condensed">
+      <thead>
+        <th class="text-center">Currency Pair</th>
+        <th class="text-center">From Amount</th>
+        <th class="text-center">Rate</th>
+        <th class="text-center">To Amount</th>
+      </thead>
+      <tbody class="text-center">
+        <% @customer.transactions.each do |t| %>
+          <tr>
+            <td>
+              <%= CurrencyPair.find_by_id(t.currency_pair_id).ccy_pair_iso %>
+            </td>
+            <td>
+              <%= t.fr_amount %>
+            </td>
+            <td>
+              <%= t.rate.rate %>
+            </td>
+            <td>
+              <%= t.to_amount %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-md-3 pull-right"></div>
+  <div class="col-md-2 pull-right">
+    <% ccys = Transaction.select(:fr_ccy_id, :fr_amount) %>
+    <% fr_ccy = Transaction.select(:fr_ccy_id).distinct %>
+    <table class= "table table-condensed">
+      <tr>
+        <td class="info text-center">
+          <b>Total sent</b>
+        </td>
+      </tr>
+      <% fr_ccy.each do |w| %>
+        <tr>
+          <td>
+            <b><%= Currency.find_by_id(w.fr_ccy_id).iso%> </b>
+            <%=Transaction.where("fr_ccy_id = :fr AND customer_id = :cid", {fr: w.fr_ccy_id, cid: @customer.id}).sum('fr_amount')%>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
 </div>
 
 <div class="row">
-	<div class="col-md-5 pull-right">
-		<% array1 = Transaction.find_by_sql(["SELECT currency_pair_id FROM transactions WHERE customer_id = ?", @customer.id]) %>
-		<% array_uniq = array1.uniq{|x| x.currency_pair_id} %>
-		<% c = array_uniq.count %>
-		<% i = 1 %>
-		<% while i <= c %>
-			<% w = array_uniq[1].currency_pair_id %>
-			<% array2 = Transaction.find_by_sql(["SELECT fr_amount FROM transactions WHERE customer_id = ? AND currency_pair_id = ?", @customer.id, w]) %>
-			<%= array2.map(&:fr_amount).inject(0, &:+) %>
-			<% i = i + 1 %>
-		<% end %>
-	</div>
-</div>
-
-<div class="row">
-	<div class="col-md-8">
-		<%= link_to 'Edit', edit_customer_path(@customer), :class => "btn btn-default" %>
-		|
-		<%= link_to "Back", :back, :class => "btn btn-default" %>
-	</div>
-</div>
+  <div class="col-md-8">
+    <%= link_to 'Edit', edit_customer_path(@customer), :class => "btn btn-default" %>
+    |
+    <%= link_to "Back", :back, :class => "btn btn-default" %>
+  </div>
+</div>      

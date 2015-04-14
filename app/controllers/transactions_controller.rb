@@ -28,6 +28,8 @@ class TransactionsController < ApplicationController
     id = @transaction
     @transaction.rate_value = "#{Rate.find_by_id(id.rate_id).rate}"
     @transaction.user_id = current_user.id
+    @transaction.fr_ccy_id = "#{CurrencyPair.find_by_id(id.currency_pair_id).fr_currency_id}"
+    @transaction.to_ccy_id = "#{CurrencyPair.find_by_id(id.currency_pair_id).to_currency_id}"
     if @transaction.save
       redirect_to customer_transactions_path, notice: 'Transaction was successfully created.'
     else

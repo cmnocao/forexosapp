@@ -1,19 +1,45 @@
 <h3 class="page-header">
-  Transactions
+  Till &#8226; <%= Time.now.strftime("%m/%d/%Y") %>
 </h3>
 <table class="table table-hover">
   <thead>
     <tr>
+      <th>Transaction ID</th>
       <th>Customer</th>
-      <th>From Amount</th>
+      <th>From Currency</th>
+      <th>Created at</th>
     </tr>
   </thead>
   <tbody>
     <% @user_transactions.each do |t| %>
       <tr>
-        <td><%= link_to t.customer.full_name, customer_path(t.customer) %></td>
-        <td><%= t.fr_amount %></td>
+        <td><%= t.id %></td>
+        <td><%= gravatar_tag t.customer.email, size: 20 %> &#8226; <%= link_to t.customer.full_name, customer_path(t.customer) %></td>
+        <td><%= Currency.find_by_id(t.fr_ccy_id).iso %> <%= t.fr_amount %></td>
+        <td><%=t.created_at.strftime("%I:%M%p")%></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<br>
+<br>
+<div class="row">
+  <div class="col-md-4">
+    <table class= "table table-condensed">
+      <tr>
+        <td class="info text-center">
+          <b>Totals</b>
+        </td>
+      </tr>
+      <% fr_ccy = Transaction.where("user_id = :uid AND created_at >= :date", {uid: current_user.id, date: Time.zone.now.beginning_of_day}).select(:fr_ccy_id).distinct%>
+      <% fr_ccy.each do |w| %>
+        <tr>
+          <td>
+            <b><%= Currency.find_by_id(w.fr_ccy_id).iso%></b>
+            <%=Transaction.where("fr_ccy_id = :fr AND user_id = :uid AND created_at >= :date", {fr: w.fr_ccy_id, uid: current_user.id, date: Time.zone.now.beginning_of_day}).sum('fr_amount')%>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

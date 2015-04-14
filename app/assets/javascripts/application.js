@@ -25,7 +25,8 @@ $(function() {
 
 function calculate(){
 	var transaction_fr_amount = document.getElementById('transaction_fr_amount').value;
+	transaction_fr_amount = parseFloat(transaction_fr_amount)
 	var transaction_rate = $("#transaction_rate_id option:selected").text();
 	var to_amount = transaction_fr_amount * transaction_rate;
-	document.getElementById('transaction_to_amount').value = parseFloat(to_amount).toFixed(2);
+	document.getElementById('transaction_to_amount').value = to_amount.toFixed(2);
 };

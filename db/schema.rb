@@ -57,8 +57,8 @@ ActiveRecord::Schema.define(version: 20150402114755) do
     t.string   "dob",             null: false
     t.string   "profile_picture"
     t.integer  "country_id",      null: false
-    t.string   "country_name"
-    t.string   "email"
+    t.string   "country_name",    null: false
+    t.string   "email",           null: false
     t.string   "phone"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -82,13 +82,15 @@ ActiveRecord::Schema.define(version: 20150402114755) do
   end
 
   create_table "transactions", force: :cascade do |t|
-    t.integer  "currency_pair_id"
-    t.integer  "rate_id"
-    t.float    "fr_amount"
-    t.float    "to_amount"
-    t.integer  "customer_id"
-    t.float    "rate_value"
-    t.integer  "user_id"
+    t.integer  "currency_pair_id", null: false
+    t.integer  "rate_id",          null: false
+    t.float    "fr_amount",        null: false
+    t.float    "to_amount",        null: false
+    t.integer  "customer_id",      null: false
+    t.float    "rate_value",       null: false
+    t.integer  "user_id",          null: false
+    t.integer  "fr_ccy_id",        null: false
+    t.integer  "to_ccy_id",        null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

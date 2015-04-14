@@ -24,8 +24,13 @@
       <tr>
         <td><%= Currency.find_by_id(c.fr_currency_id).iso.upcase %> x <%= Currency.find_by_id(c.to_currency_id).iso.upcase %></td>
         <td><%=  fr = (1 / (@rates["rates"][Currency.find_by_id(c.fr_currency_id).iso.upcase]) *  @rates["rates"][Currency.find_by_id(c.to_currency_id).iso.upcase]).round(3) %></td>
-        <td><%= to = c.rates.last.rate %></td>
-        <td><%= (fr - to).round(3) %></td>
+        <% if c.rates.count > 0 %>
+          <td><%= to = c.rates.last.rate %></td>
+          <td><%= (fr - to).round(3) %></td>
+        <% else %>
+          <td></td>
+          <td></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

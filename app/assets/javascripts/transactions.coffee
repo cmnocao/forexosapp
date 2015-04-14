@@ -3,8 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 jQuery ->
-  $.ajaxSetup cache: false
-  $('#transaction_rate_id').parent().toggle()
+  $('#transaction_rate_id').parent().hide()
   rates = $('#transaction_rate_id').html()
   $('#transaction_currency_pair_id').change ->
     ccy_pair = $('#transaction_currency_pair_id :selected').text()
@@ -12,7 +11,7 @@ jQuery ->
     options = $(rates).filter("optgroup[label=#{ccy_pair_scaped}]").html()
     if options
       $('#transaction_rate_id').html(options)
-      $('#transaction_rate_id').parent().toggle()      
+      $('#transaction_rate_id').parent().show()      
     else
       $('#transaction_rate_id').empty()
-      $('#transaction_rate_id').parent().toggle()
+      $('#transaction_rate_id').parent().hide()

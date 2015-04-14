@@ -6,7 +6,7 @@
 
     <%= f.input :rate_id, collection: CurrencyPair.order(:ccy_pair_iso), as: :grouped_select, group_method: :rates, label_method: :rate, group_label_method: :ccy_pair_iso %>
 
-    <%= f.input :fr_amount, :input_html => {:onkeydown => 'calculate();'} %>
+    <%= f.input :fr_amount, :input_html => {:onfocusout => 'calculate();'} %>
 
     <%= f.input :to_amount, readonly: true %>
 

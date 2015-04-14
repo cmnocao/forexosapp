@@ -10,7 +10,7 @@
 
     <%= f.input :dob %>
 
-    <%= f.input :country_id %>
+    <%= f.input :country_id, :collection => Country.all, :label_method => :name, :value_method => :id, :label => "Country" ,:include_blank => true %>
 
     <%= f.input :email %>
 

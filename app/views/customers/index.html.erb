@@ -29,7 +29,7 @@
   <tbody>
     <% @customers.each do |c| %>
       <tr>
-        <td><%= link_to c.full_name.titleize, c %></td>
+        <td><%= gravatar_tag c.email, size: 20 %> &#8226; <%= link_to c.full_name.titleize, c %></td>
         <td><%= c.sex.titleize %></td>
         <td><%= c.dob %></td>
       </tr>
