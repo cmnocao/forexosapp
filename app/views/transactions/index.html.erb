@@ -1,13 +1,11 @@
 <h3 class="page-header">
   Transactions
-  <small>
-    <%= link_to @customer.full_name, customer_path(@customer) %>
-  </small>
 </h3>
 <table class="table table-hover">
   <thead>
     <tr>
       <th>ID</th>
+      <th>Customer</th>
       <th>Currency Pair</th>
       <th>From Amount</th>
       <th>To Amount</th>
@@ -15,9 +13,10 @@
     </tr>
   </thead>
   <tbody>
-    <% @customer.transactions.each do |t| %>
+    <% @transactions.each do |t| %>
       <tr>
-        <td><%= link_to t.id, customer_transaction_path(t.id, t.id) %></td>
+        <td><%= link_to t.id, transaction_path(t) %></td>
+        <td><%= t.customer.full_name %></td>
         <td><%= t.currency_pair.ccy_pair_iso %></td>
         <td><%= t.fr_amount %></td>
         <td><%= t.to_amount %></td>

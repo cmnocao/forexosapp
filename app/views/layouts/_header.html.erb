@@ -19,24 +19,54 @@
         <% end %>
       <% end %>
     </div>
+
     <div class="collapse navbar-collapse" id="menu-collapse">
       <% if current_user %>  
         <ul class="nav navbar-nav navbar-left">
           <li><%= link_to "Rates", rates_path %></li>
           <li><%= link_to "Till", till_path %></li>
-          <% if current_user.admin? %> 
-            <li><%= link_to "Currency Pairs", currency_pairs_path %></li>
-            <li><%= link_to "Countries", countries_path %></li>
-            <li><%= link_to "Users", users_path %></li>
-            <li><%= link_to "States", states_path %></li>
-            <li><%= link_to "Cities", cities_path %></li>
-            <li><%= link_to "Currencies", currencies_path %></li>
-            <li><%= link_to "Customers", customers_path %></li>
-            <li><%= link_to "Admin", rails_admin_path %></li>
-          <% end %>
+        <% if current_user.admin? %> 
+          <li class="dropdown">
+            <a id="drop1" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+            <i class="fa fa-cogs"></i> Config
+            <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+              <li role="presentation">
+                <%= link_to "Currency Pairs", currency_pairs_path, html: { role: 'menuitem',  tabindex: '-1'} %>
+              </li>
+              <li role="presentation">
+                <%= link_to "Countries", countries_path, html: { role: 'menuitem',  tabindex: '-1'} %>
+              </li>
+              <li role="presentation">
+                <%= link_to "Users", users_path, html: { role: 'menuitem',  tabindex: '-1'} %>
+              </li>
+              <li role="presentation">
+                <%= link_to "States", states_path, html: { role: 'menuitem',  tabindex: '-1'} %>
+              </li>
+              <li role="presentation">
+                <%= link_to "Cities", cities_path, html: { role: 'menuitem',  tabindex: '-1'} %>
+              </li>
+              <li role="presentation">
+                <%= link_to "Currencies", currencies_path, html: { role: 'menuitem',  tabindex: '-1'} %>
+              </li>
+              <li role="presentation">
+                <%= link_to "Customers", customers_path, html: { role: 'menuitem',  tabindex: '-1'} %>
+              </li>
+              <li role="presentation">
+                <%= link_to "Transactions", transactions_path, html: { role: 'menuitem',  tabindex: '-1'} %>
+              </li>
+            </ul>
+          </li>
+        <% end %>
         </ul>
       <% end %>
+      </div>
+
       <ul class="nav navbar-nav navbar-right">
+        <% if current_user.admin? %> 
+          <li><%= link_to "Admin", rails_admin_path %></li>
+        <% end %>
         <%= render "layouts/user_logic" %>
       </ul>
     </div><!-- /.navbar-collapse -->

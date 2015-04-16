@@ -4,12 +4,13 @@
   <% else %>
     <i class="fa fa-male fa-x2"></i>
   <% end %>
+  &#8226;
   <%= @customer.full_name.titleize %>
   <small>
     <%= @customer.class %>
   </small>
   <div class="pull-right">
-    <%= link_to new_customer_transaction_path(@customer.id) do %>
+    <%= link_to new_customer_transaction_path(@customer) do %>
       <i class="fa fa-money"></i>
     <% end %>
     &#8226;
@@ -63,25 +64,25 @@
   <div class="col-md-5 pull-right">
     <table class="table table-condensed">
       <thead>
+        <th class="text-center">ID</th>
+        <th class="text-center">Date</th>
         <th class="text-center">Currency Pair</th>
-        <th class="text-center">From Amount</th>
-        <th class="text-center">Rate</th>
         <th class="text-center">To Amount</th>
       </thead>
       <tbody class="text-center">
         <% @customer.transactions.each do |t| %>
           <tr>
             <td>
+              <%= link_to t.id, t %>
+            </td>
+            <td>
+              <%= t.created_at.strftime("%d/%m/%y") %>
+            </td>
+            <td>
               <%= CurrencyPair.find_by_id(t.currency_pair_id).ccy_pair_iso %>
             </td>
             <td>
               <%= t.fr_amount %>
-            </td>
-            <td>
-              <%= t.rate.rate %>
-            </td>
-            <td>
-              <%= t.to_amount %>
             </td>
           </tr>
         <% end %>
@@ -93,19 +94,18 @@
 <div class="row">
   <div class="col-md-3 pull-right"></div>
   <div class="col-md-2 pull-right">
-    <% ccys = Transaction.select(:fr_ccy_id, :fr_amount) %>
-    <% fr_ccy = Transaction.select(:fr_ccy_id).distinct %>
     <table class= "table table-condensed">
       <tr>
         <td class="info text-center">
           <b>Total sent</b>
         </td>
       </tr>
+      <% fr_ccy = Transaction.where("customer_id = :cid", {cid: @customer.id}).select(:fr_ccy_id).distinct %>
       <% fr_ccy.each do |w| %>
         <tr>
           <td>
             <b><%= Currency.find_by_id(w.fr_ccy_id).iso%> </b>
-            <%=Transaction.where("fr_ccy_id = :fr AND customer_id = :cid", {fr: w.fr_ccy_id, cid: @customer.id}).sum('fr_amount')%>
+            <%=Transaction.where("fr_ccy_id = :fr", {fr: w.fr_ccy_id}).sum('fr_amount')%>
           </td>
         </tr>
       <% end %>

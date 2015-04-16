@@ -3,13 +3,11 @@ class TransactionsController < ApplicationController
   before_action :set_transaction, only: [:show, :edit, :update, :destroy]
 
   def index
-    @customer = Customer.find(params[:customer_id])
     @transactions = Transaction.all
   end
 
   def show
-    @customer = Customer.find(params[:customer_id])
-    @transaction = @customer.transactions.find(params[:id])
+    @transaction = Transaction.find(params[:id])
   end
 
   def new
@@ -18,8 +16,7 @@ class TransactionsController < ApplicationController
   end
 
   def edit
-    @customer = Customer.find(params[:customer_id])
-    @transaction = @customer.transactions.find(params[:id])
+    @transaction = Transaction.find(params[:id])
   end
 
   def create
@@ -31,7 +28,7 @@ class TransactionsController < ApplicationController
     @transaction.fr_ccy_id = "#{CurrencyPair.find_by_id(id.currency_pair_id).fr_currency_id}"
     @transaction.to_ccy_id = "#{CurrencyPair.find_by_id(id.currency_pair_id).to_currency_id}"
     if @transaction.save
-      redirect_to customer_transactions_path, notice: 'Transaction was successfully created.'
+      redirect_to customer_path(@customer), notice: 'Transaction was successfully created.'
     else
       render :new
     end
@@ -39,7 +36,7 @@ class TransactionsController < ApplicationController
 
   def update
     if @transaction.update(transaction_params)
-      redirect_to customer_transaction_path(params[:customer_id], @transaction), notice: 'Transaction was successfully updated.'
+      redirect_to transaction_path(@transaction), notice: 'Transaction was successfully updated.'
     else
       render :edit
     end

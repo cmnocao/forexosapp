@@ -5,8 +5,10 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   resources :customers do
-    resources :transactions
+    resources :transactions, only: [:new, :create]
   end
+  resources :transactions, only: [:show, :index, :edit, :update]
+  
   resources :currency_pairs
   resources :rates
   resources :currencies
