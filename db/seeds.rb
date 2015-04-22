@@ -14,7 +14,7 @@ Rate.create!([
 	{	rate: 0.83, currency_pair_id: 1},
 	{	rate: 0.58, currency_pair_id: 2},
 	{	rate: 1.02, currency_pair_id: 3},
-	{	rate: 4.56, currency_pair_id: 4},
+	{	rate: 4.32, currency_pair_id: 4},
 	])
 
 Transaction.create!([
