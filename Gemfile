@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 
 gem 'rails', '4.2.0'
-gem 'sqlite3', '1.3.10'
 gem 'sass-rails', '5.0.1'
 gem 'uglifier', '2.7.1'
 gem 'coffee-rails', '~> 4.1.0'
@@ -28,4 +27,12 @@ group :development, :test do
   gem 'spring'
   gem 'rspec-rails', '~> 3.1'
   gem 'capybara', '~> 2.2.0'
+end
+
+group :development do
+	gem 'sqlite3', '1.3.10'
+end
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
 end
