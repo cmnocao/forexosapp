@@ -1,6 +1,6 @@
 class StatesController < ApplicationController
   before_filter :authorize_admin
-  before_action :set_state, only: [:show, :edit, :update, :destroy]
+  before_action :set_state, only: [:show, :edit, :update]
 
   def index
     @states = State.all
@@ -31,11 +31,6 @@ class StatesController < ApplicationController
     else
       render :edit 
     end
-  end
-
-  def destroy
-  @state.destroy
-    redirect_to states_url, notice: 'State was successfully destroyed.'
   end
 
   private

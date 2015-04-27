@@ -1,34 +1,45 @@
 require "spec_helper"
 
 describe CustomersController do
-  describe "routing" do
+  describe "routing", :type => :routing do
 
     it "routes to #index" do
-      get("/customers").should route_to("customers#index")
+    expect(:get => "/customers").to route_to(
+      :controller => "customers",
+      :action => "index")
     end
 
     it "routes to #new" do
-      get("/customers/new").should route_to("customers#new")
+    expect(:get => "/customers/new").to route_to(
+      :controller => "customers",
+      :action => "new")
     end
 
     it "routes to #show" do
-      get("/customers/1").should route_to("customers#show", :id => "1")
+    expect(:get => "/customers/1").to route_to(
+      :controller => "customers",
+      :action => "show",
+      :id => "1")
     end
 
     it "routes to #edit" do
-      get("/customers/1/edit").should route_to("customers#edit", :id => "1")
+    expect(:get => "/customers/1/edit").to route_to(
+      :controller => "customers",
+      :action => "edit",
+      :id => "1")
     end
 
     it "routes to #create" do
-      post("/customers").should route_to("customers#create")
+    expect(:post => "/customers").to route_to(
+      :controller => "customers",
+      :action => "create")
     end
 
     it "routes to #update" do
-      put("/customers/1").should route_to("customers#update", :id => "1")
-    end
-
-    it "routes to #destroy" do
-      delete("/customers/1").should route_to("customers#destroy", :id => "1")
+    expect(:put => "/customers/1").to route_to(
+      :controller => "customers",
+      :action => "update",
+      :id => "1")
     end
 
   end

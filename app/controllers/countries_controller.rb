@@ -1,6 +1,6 @@
 class CountriesController < ApplicationController
   before_filter :authorize_admin
-  before_action :set_country, only: [:show, :edit, :update, :destroy]
+  before_action :set_country, only: [:show, :edit, :update]
 
   def index
     @countries = Country.all
@@ -31,11 +31,6 @@ class CountriesController < ApplicationController
     else
       render :edit
     end
-  end
-
-  def destroy
-    @country.destroy
-    redirect_to countries_url, notice: 'Country was successfully destroyed.'
   end
 
   private

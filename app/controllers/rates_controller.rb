@@ -1,6 +1,6 @@
 class RatesController < ApplicationController
   before_filter :authorize
-  before_action :set_rate, only: [:show, :edit, :update, :destroy]
+  before_action :set_rate, only: [:show, :edit, :update]
 
   def index
     @rates = Rate.all
@@ -32,11 +32,6 @@ class RatesController < ApplicationController
     else
       render :edit
     end
-  end
-
-  def destroy
-    @rate.destroy
-    redirect_to rates_url, notice: 'Rate was successfully destroyed.'
   end
 
   private

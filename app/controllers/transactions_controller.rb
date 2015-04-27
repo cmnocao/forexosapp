@@ -1,6 +1,6 @@
 class TransactionsController < ApplicationController
   before_filter :authorize
-  before_action :set_transaction, only: [:show, :edit, :update, :destroy]
+  before_action :set_transaction, only: [:show, :edit, :update]
 
   def index
     @transactions = Transaction.all
@@ -40,11 +40,6 @@ class TransactionsController < ApplicationController
     else
       render :edit
     end
-  end
-
-  def destroy
-    @transaction.destroy
-    redirect_to transactions_url, notice: 'Transaction was successfully destroyed.'
   end
 
   private

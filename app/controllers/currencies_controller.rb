@@ -1,6 +1,6 @@
 class CurrenciesController < ApplicationController
   before_filter :authorize_admin
-  before_action :set_currency, only: [:show, :edit, :update, :destroy]
+  before_action :set_currency, only: [:show, :edit, :update]
 
   def index
     @currencies = Currency.all
@@ -31,11 +31,6 @@ class CurrenciesController < ApplicationController
     else
       render :edit 
     end
-  end
-
-  def destroy
-  @currency.destroy
-    redirect_to currencies_url, notice: 'Currency was successfully destroyed.'
   end
 
   private

@@ -1,34 +1,45 @@
 require "spec_helper"
 
 describe StatesController do
-  describe "routing" do
+  describe "routing", :type => :routing do
 
     it "routes to #index" do
-      get("/states").should route_to("states#index")
+    expect(:get => "/states").to route_to(
+      :controller => "states",
+      :action => "index")
     end
 
     it "routes to #new" do
-      get("/states/new").should route_to("states#new")
+    expect(:get => "/states/new").to route_to(
+      :controller => "states",
+      :action => "new")
     end
 
     it "routes to #show" do
-      get("/states/1").should route_to("states#show", :id => "1")
+    expect(:get => "/states/1").to route_to(
+      :controller => "states",
+      :action => "show",
+      :id => "1")
     end
 
     it "routes to #edit" do
-      get("/states/1/edit").should route_to("states#edit", :id => "1")
+    expect(:get => "/states/1/edit").to route_to(
+      :controller => "states",
+      :action => "edit",
+      :id => "1")
     end
 
     it "routes to #create" do
-      post("/states").should route_to("states#create")
+    expect(:post => "/states").to route_to(
+      :controller => "states",
+      :action => "create")
     end
 
     it "routes to #update" do
-      put("/states/1").should route_to("states#update", :id => "1")
-    end
-
-    it "routes to #destroy" do
-      delete("/states/1").should route_to("states#destroy", :id => "1")
+    expect(:put => "/states/1").to route_to(
+      :controller => "states",
+      :action => "update",
+      :id => "1")
     end
 
   end

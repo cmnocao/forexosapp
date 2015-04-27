@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
   before_filter :authorize
-  before_action :set_customer, only: [:show, :edit, :update, :destroy]
+  before_action :set_customer, only: [:show, :edit, :update]
 
   def index
     @customers = Customer.search(params[:search])
@@ -37,11 +37,6 @@ class CustomersController < ApplicationController
     else
       render :edit 
     end
-  end
-
-  def destroy
-    @customer.destroy
-    redirect_to customers_url, notice: 'Customer was successfully destroyed.'
   end
 
   private

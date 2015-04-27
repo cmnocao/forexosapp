@@ -1,34 +1,45 @@
 require "spec_helper"
 
 describe CurrencyPairsController do
-  describe "routing" do
+  describe "routing", :type => :routing do
 
     it "routes to #index" do
-      get("/currency_pairs").should route_to("currency_pairs#index")
+    expect(:get => "/currency_pairs").to route_to(
+      :controller => "currency_pairs",
+      :action => "index")
     end
 
     it "routes to #new" do
-      get("/currency_pairs/new").should route_to("currency_pairs#new")
+    expect(:get => "/currency_pairs/new").to route_to(
+      :controller => "currency_pairs",
+      :action => "new")
     end
 
     it "routes to #show" do
-      get("/currency_pairs/1").should route_to("currency_pairs#show", :id => "1")
+    expect(:get => "/currency_pairs/1").to route_to(
+      :controller => "currency_pairs",
+      :action => "show",
+      :id => "1")
     end
 
     it "routes to #edit" do
-      get("/currency_pairs/1/edit").should route_to("currency_pairs#edit", :id => "1")
+    expect(:get => "/currency_pairs/1/edit").to route_to(
+      :controller => "currency_pairs",
+      :action => "edit",
+      :id => "1")
     end
 
     it "routes to #create" do
-      post("/currency_pairs").should route_to("currency_pairs#create")
+    expect(:post => "/currency_pairs").to route_to(
+      :controller => "currency_pairs",
+      :action => "create")
     end
 
     it "routes to #update" do
-      put("/currency_pairs/1").should route_to("currency_pairs#update", :id => "1")
-    end
-
-    it "routes to #destroy" do
-      delete("/currency_pairs/1").should route_to("currency_pairs#destroy", :id => "1")
+    expect(:put => "/currency_pairs/1").to route_to(
+      :controller => "currency_pairs",
+      :action => "update",
+      :id => "1")
     end
 
   end

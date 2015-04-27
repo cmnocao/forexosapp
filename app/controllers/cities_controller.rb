@@ -1,6 +1,6 @@
 class CitiesController < ApplicationController
   before_filter :authorize_admin
-  before_action :set_city, only: [:show, :edit, :update, :destroy]
+  before_action :set_city, only: [:show, :edit, :update]
 
   def index
     @cities = City.all
@@ -31,11 +31,6 @@ class CitiesController < ApplicationController
     else
       render :edit
     end
-  end
-
-  def destroy
-    @city.destroy
-    redirect_to cities_url, notice: 'City was successfully destroyed.'
   end
 
   private

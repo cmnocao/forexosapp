@@ -1,6 +1,6 @@
 class CurrencyPairsController < ApplicationController
   before_filter :authorize_admin
-  before_action :set_currency_pair, only: [:show, :edit, :update, :destroy]
+  before_action :set_currency_pair, only: [:show, :edit, :update]
 
   def index
     @currency_pairs = CurrencyPair.all
@@ -37,10 +37,6 @@ class CurrencyPairsController < ApplicationController
     end
   end
 
-  def destroy
-    @currency_pair.destroy
-    redirect_to currency_pairs_url, notice: 'Currency Pair was successfully destroyed.'
-  end
 
   def countries_hash
     customer = Customers.all
